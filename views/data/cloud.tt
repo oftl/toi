@@ -1,0 +1,42 @@
+<% tag_count = ht_sorted.size %>
+
+<%  step_left = 150;
+    step_top = 50;
+    pos_top = step_top;
+    pos_left = 0;
+    width = step_left * 5;
+%>
+
+<% FOREACH tag IN ht_sorted %>
+    <% IF pos_left > width %>
+        <% pos_left = step_left %>
+        <% pos_top = pos_top + step_top %>
+    <% ELSE %>
+        <% pos_left = pos_left + step_left %>
+    <% END %>
+    
+    <div id="hashtag_<% tag %>"
+        class="fixed_bubble"
+        style="top:<% pos_top %>px; left:<% pos_left %>px;"
+        onmouseover="TOI.show_bubble('users_by_tag_<% tag %>')"
+        onmouseout="TOI.hide_bubble('users_by_tag_<% tag %>')">
+        
+        <a target="_blank" href="https://twitter.com/search?q=%23<% tag %>&src=hash">
+            #<% tag %> (g: <% ht.$tag.global_count %>)
+        </a>
+    
+        <div id="users_by_tag_<% tag %>"
+            class="info_bubble yellow_bubble">
+            
+            <% FOR user IN ht.$tag.users %>
+                <div><a target="_blank" href="https://twitter.com/<% user.twitter_id %>">
+                     @<% ut.${user.twitter_id}.full_name OR user.twitter_id %></a>
+                     (<% user.count %>)
+                </div>
+            <% END %>
+
+        </div>
+    </div>
+
+<% END %>
+

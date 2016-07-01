@@ -1,0 +1,61 @@
+<div class="ui-widget">
+
+    <h3>Info</h3>
+
+    <strong>SYNOPSIS</strong>
+
+    <p>
+    <strong>TOI</strong> - Tweets Of Interest - ist: Sammlung, Aggregation und Präsentation (via Webinterface) von Tweets.
+
+    </p><p>
+    TOI ist ein kleines Experiment aus Spass an der Freude. Performance war nicht der motivierende und interessante Aspekt bei der Umsetzung und besonders das Webinterface zeichnet sich nicht durch Grossartigkeit aus ;--)
+    </p><p>
+
+    TOI liest Tweets der User bestimmter Twitter-Listen. Die Hashtags in diesen Tweets werden gespeichert und sind dann innerhalb eines Zeitfensters darstellbar.
+    </p><p>
+
+    Unter <i>Settings</i> links oben koennen die gewuenschten Parameter eingegeben werden.
+    </p><p>
+
+    Ein <i>OTH</i> ist ein one-time-hash. Weil nur Hashtags die oft vorkommen interessant sind kann damit festgelegt werden wie oft ein einzelner Hashtag vorkommen muss um beruecksichtigt zu werden.
+    </p><p>
+
+    Mit den nach den beobachteten Listen benannten Buttons waehlt man eben diese Liste(n) aus.
+    </p><p>
+
+    Mit <i>Obfuscate names</i> und <i>Use real names</i> wird festgelegt ob die Twitter-Namen verschleiert werden sollen oder nicht (Was nur in der List-View sichtbar wird).
+    </p><p>
+
+    <i>Refetch data</i> laedt die entsprechenden Daten frisch vom Server (was meistens nicht notwendig ist weil unmitelbar nach Aendern von Einstellungen bereits geschehen).
+    </p><p>
+
+    Mit <i>View</i> kann die Praesentation der Daten eingestellt werden, was natuerlich keinerlei Auswirkung auf die Daten selbst hat und auch kein neuerliches Laden der Daten proviziert.
+    </p><p>
+
+    <strong>Top 10</strong>
+    </p><p>
+
+    Die Grossen Zehn der TOI. In regelmaessigen Abstaenden (derzeit alle 15 Minuten) werden die Top 10 der letzten 24 Stunden 24, 48 und 72 Stunden fuer jede Liste einzeln und insgesamt ermittelt. Wobei <i>total</i> basierend auf den Listenergebnissen und <iu>total base</i> direkt errechnet werden.
+    </p><p>
+
+    <strong>Setup</strong>
+    </p><p>
+
+    Aus Interesse und purer Neugierde darauf ist TOI nicht als langweiliges 08/15 Apache-Setup ausgefuehrt sondern:
+    </p><p>
+
+    <pre>
+        Virtuelle Maschine mit VirtualBox (VBoxManage, VBoxHeadless)
+        Archlinux
+        nginx
+        Plack
+        Twiggy
+        Dancer (and friends)
+        Server::Starter
+    </pre>
+    </p><p>
+
+    TOI gliedert sich in ein Webfrontend (<i>app.pl</i>), einen Daemon-Prozess (</i>master.pl</i>) der ueber die Twitter-API die entsprechenden Tweets einliest und ein Skript (<i>toi_n.pl</i>) das cron-gesteuert (cronie) Die Grossen Zehn regelmaessig errechnet. Die Langlaufenden Prozesse (<i>app.pl</i>, <i>master.pl</i>) werden mit <i>Server::Starter</i> daemonisiert.
+    </p>
+
+</div>

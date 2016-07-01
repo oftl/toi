@@ -1,0 +1,37 @@
+
+<table border=0 rules="rows">
+
+    <% FOREACH user IN ut.keys %>
+        <tr>
+            <td rowspan="2"><strong><% ut.$user.full_name %></strong></td>
+            
+            <td>
+                <% FOREACH hashtag IN ut.$user.hashtags.keys %>
+                    <% hashtag %>
+                    (<% ut.$user.hashtags.$hashtag %>, g: <% ht.$hashtag.global_count %>), 
+                <% END %>
+            </td>
+        </tr>
+            
+        <td>
+            <% FOREACH mentioned_user IN ut.$user.user_mentions.keys %>
+                <% mentioned_user %> (<% ut.$user.user_mentions.$mentioned_user %>), 
+            <% END %>
+        </td>
+
+    <% END %>
+
+</table>
+
+<hr>
+
+<h3>Users</h3>
+<pre>
+    <% USE dumper (pad="") %>
+    <% dumper.dump(ut) %>
+</pre>
+<h3>#tags</h3>
+<pre>
+    <% USE dumper (pad="") %>
+    <% dumper.dump(ht) %>
+</pre>

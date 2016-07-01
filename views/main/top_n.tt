@@ -1,0 +1,93 @@
+<div class="ui-widget">
+
+    <h3>Die Grossen 10</h3>
+
+    <% FOREACH p IN top_n %>
+    <span class="period_container">
+
+        <span class="toggle_control meta_container">
+            <h3>Meta</h3>
+
+            <span class="toggle_area">
+                Calculation time: <% p.created %> <br />
+                Period: <% p.period %> <br />
+                Size of n: <% p.n %> <br />
+            </span>
+        </span>
+
+        <span class="toggle_control total_base_container">
+            <h3>Total base</h3>
+
+            <table class="toggle_area">
+                <% FOREACH x IN p.top_n_total_base %>
+                    <tr>
+                        <td>
+                            &sum;
+                        </td>
+                        <td class="number_cell">
+                            <% x.count %>
+                        </td>
+                        <td class="text_cell"><a class="twitter_link" target="_blank" href="https://twitter.com/hashtag/<% x.ttag %>?src=hash">#<% x.ttag %></a></td>
+                    </tr>
+                <% END %>
+            </table>
+        </span>
+
+        <span class="toggle_control total_container">
+            <h3>Total</h3>
+
+            <table class="toggle_area">
+                <% FOREACH x IN p.top_n_total %>
+                    <tr>
+                        <td>
+                            &sum;
+                        </td>
+                        <td class="number_cell">
+                            <% x.count %>
+                        </td>
+                        <td class="text_cell">
+                            <a class="twitter_link" target="_blank" href="https://twitter.com/hashtag/<% x.ttag %>?src=hash">#<% x.ttag %></a>
+                        </td>
+                    </tr>
+                <% END %>
+            </table>
+        </span>
+
+        <span class="toggle_control per_list_container">
+            <h3>Per list</h3>
+
+            <span class="toggle_area">
+
+                <% FOREACH tlist IN p.top_n.keys.sort %>
+                    <div class="list_container">
+                        <h4><% tlist %></h4>
+
+                        <table class="toggle_area">
+                            <% FOREACH pos IN p.top_n.$tlist.keys.nsort %>
+                                <% count = p.top_n.$tlist.$pos.count %>
+                                <% ttag  = p.top_n.$tlist.$pos.ttag %>
+
+                                <tr>
+                                    <td>
+                                        &sum;
+                                    </td>
+                                    <td class="number_cell">
+                                        <% count %>
+                                    </td>
+                                    <td class="text_cell">
+                                        <a class="twitter_link" target="_blank" href="https://twitter.com/hashtag/<% ttag %>?src=hash">#<% ttag %></a>
+                                    </td>
+
+                                </tr>
+                            <% END %>
+                        </table>
+                    </div> <%# <div class="list_container"> %>
+                <% END %>
+
+            </span> <%# <span class="toggle_area"> %>
+        </span> <%# <span class="toggle_control per_list_container"> %>
+    </span> <%# <span class="period_container"> %>
+    <% END %> <%# FOREACH p IN top_n %>
+
+    <span style="clear:both" />
+</div>

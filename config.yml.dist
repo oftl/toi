@@ -1,0 +1,43 @@
+### select one !
+###
+# environment: production
+# environment: development
+###
+###
+
+appname:    'TOI'
+layout:     'main'
+charset:    'UTF-8'
+
+template: 'template_toolkit'
+engines:
+  template_toolkit:
+    encoding:  'utf8'
+
+logger:         'file'
+log_path:       'log/'
+log_file:       'toi.log'
+
+# http://advent.perldancer.org/2011/14
+serializer: 'JSON'
+
+plugins:
+#    FlashMessage:
+#        token_name: flash
+#        session_hash_key: _flash
+
+    DBIC:
+        default:
+            dsn: dbi:SQLite:dbname=db/toi.db
+            schema_class: TOI::Schema
+            options:
+                sqlite_unicode: 1
+
+#    Auth::RBAC:
+#        credentials:
+#            class: DBIC
+#            options:
+#                handle: default
+#                role_relation: user_roles
+#                role_name_field: role_id
+#                password_type: self_check

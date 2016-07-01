@@ -1,0 +1,26 @@
+<div>
+    <button id="settings-button" class="ui-widget controls-button"></button> <br>
+    <button id="profiles-button" class="ui-widget controls-button"></button> <br>
+    <button id="info-button"     class="ui-widget controls-button"></button> <br>
+    <button id="top_n-button"   class="ui-widget controls-button"></button> <br>
+
+    <div id="settings-controls" class="ui-widget-content controls-container">
+        <% PROCESS main/settings.tt %>
+    </div>
+
+    <div id="profiles-controls" class="ui-widget-content controls-container">
+        <% PROCESS main/profiles.tt %>
+    </div>
+
+    <div id="info-controls" class="ui-widget-content controls-container">
+        <% PROCESS main/info.tt %>
+    </div>
+
+    <div id="top_n-controls" class="ui-widget-content controls-container">
+        <% PROCESS main/top_n.tt %>
+    </div>
+
+    <div id="data">
+    </div> <!-- data -->
+
+</div>

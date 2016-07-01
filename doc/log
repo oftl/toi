@@ -1,0 +1,3 @@
+app.log     redirected stdout/stderr of dancer app
+master.log  redirected stdout/stderr of master.pl
+toi.log     logfile of master.pl

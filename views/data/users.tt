@@ -1,0 +1,36 @@
+<% USE dumper (pad="") %>
+
+<table border=0 rules="rows">
+
+    <% FOREACH user IN ut_sorted %>
+        <% IF ut.$user.public %>
+            <tr>
+                <td rowspan="2">
+                    <% ut.$user.full_name %>
+                </td>
+
+                <td>
+                    <% FOREACH tag IN ut.$user.hashtags %>
+                        <a target="_blank" href="https://twitter.com/search?q=%23<% tag.hashtag %>&src=hash">
+                            #<% tag.hashtag %>
+                        </a>
+                        (<% tag.count %>, g: <% ht.${tag.hashtag}.global_count %>), 
+                    <% END %>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <% FOREACH mentioned_user IN ut.$user.user_mentions %>
+                        <% IF ut.${mentioned_user.twitter_id}.public %>
+                            <a target="_blank" href="https://twitter.com/search?q=<% mentioned_user.twitter_id %>">
+                                @<% ut.${mentioned_user.twitter_id}.full_name %>
+                            </a>
+                            (<% mentioned_user.count %>, g: <% ut.${mentioned_user.twitter_id}.mentioned %>),
+                        <% END %>
+                    <% END %>
+                </td>
+            </tr>
+        <% END %>
+    <% END %>
+
+</table>

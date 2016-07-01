@@ -1,0 +1,4 @@
+to keep the top ten up to date a cron job needs to be run regularly.
+
+a possible crontab is:
+    0/15 *  * * *   $APP_HOME/bin/top_n.pl

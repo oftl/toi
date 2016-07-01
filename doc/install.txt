@@ -1,0 +1,28 @@
+pacman -S wget
+pacman -S base-devel    # lots of dev tools (including make)
+pacman -S nginx
+
+cpanm
+    Twiggy            # 39 distributions
+    Task::Plack       # 50 distributions
+    Server::Starter   # already installed
+    Dancer
+    YAML JSON JSON::XS Dancer::Plugin::DBIC    # 59 distributions
+    Template
+
+# only when running
+cpanm
+    DBIx::Class::Schema::Loader
+    DBIx::Class::TimeStamp
+    DBIx::Class::PassphraseColumn
+    DBIx::Class::Loader
+    Net::Twitter        # 18 distributions
+
+
+# daemons, satrt-stop-scripts
+#
+bin/app.pl      dancer app
+bin/toi.sh      dancer app start-stop-script
+bin/master.pl   master daemon; query twitter
+bin/master.sh   master start-stop-script
+bin/top_n.pl    top N calculation

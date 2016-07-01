@@ -1,0 +1,75 @@
+#data {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+}
+
+.controls-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.controls-container {
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    padding: 10px;
+    z-index: 666;
+}
+
+/**/
+
+.fixed_bubble {
+    position: absolute;
+}
+
+.info_bubble {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    display: none;
+    z-index: 666;
+}
+
+.yellow_bubble {
+    background-color:#E6DE00;
+    padding: 20px;
+    border: 2px solid gray;
+}
+
+.light_yellow_bubble {
+    background-color:#FAF761;
+    padding: 20px;
+    border: 2px solid gray;
+}
+
+/* toggel */
+.toggle_control {
+    cursor: pointer;
+}
+
+.period_container {
+    float: left;
+    width: 20em;
+    margin-left: 1em;
+}
+
+.list_container {
+    position: relative;
+    left: 1em;
+    padding-bottom: 1em;
+}
+
+.toggle_area {
+    position: relative;
+    left: 1em;
+}
+
+.number_cell {
+    padding-left: 0.5em;
+    text-align: right;
+}
+.text_cell {
+    padding-left: 1em;
+}

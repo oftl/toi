@@ -1,0 +1,22 @@
+<% USE dumper (pad="") %>
+
+<table border=0 rules="rows">                                                                                              
+
+    <% FOREACH tag IN ht_sorted %>
+        <tr>
+            <td>
+                <% tag %> (g: <% ht.$tag.global_count %>)
+            </td>
+
+            <td>
+                <% FOREACH user IN ht.$tag.users %>
+                    <% ut.${user.twitter_id}.full_name %> (<% user.count %>),
+                <% END %>
+            </td>
+
+        </tr>
+    <% END %>
+
+</table>
+
+<hr>
